@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: news-db
+  labels:
+    name: news-db
+  namespace: sock-shop
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      name: news-db
+  template:
+    metadata:
+      labels:
+        name: news-db
+    spec:
+      containers:
+        - name: news-db
+          image: kcz17/news:1.0.0
+          env:
+            - name: MYSQL_ROOT_PASSWORD
+              value: fake_password
+            - name: MYSQL_DATABASE
+              value: socksdb
+          ports:
+            - name: mysql
+              containerPort: 3306
+      nodeSelector:
+        beta.kubernetes.io/os: linux
