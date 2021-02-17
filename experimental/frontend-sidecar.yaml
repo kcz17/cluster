@@ -30,7 +30,7 @@ spec:
                 - all
             readOnlyRootFilesystem: true
         - name: front-end-sidecar
-          image: kcz17/http-sidecar:0.0.2
+          image: kcz17/http-sidecar:0.0.3
           ports:
             - containerPort: 8078
           env:
@@ -38,6 +38,8 @@ spec:
               value: "8078"
             - name: BE_PORT
               value: "8079"
+            - name: NUM_REQUESTS_WINDOW
+              value: "1000"
       nodeSelector:
         beta.kubernetes.io/os: linux
 ---
