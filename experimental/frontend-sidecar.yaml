@@ -41,15 +41,15 @@ spec:
             - name: NUM_REQUESTS_WINDOW
               value: "1000"
             - name: CONTROLLER_SAMPLE_PERIOD
-              value: 1
+              value: "1"
             - name: CONTROLLER_SETPOINT
-              value: 1
+              value: "1"
             - name: CONTROLLER_KP
-              value: 100
+              value: "100"
             - name: CONTROLLER_KI
-              value: 0
+              value: "0"
             - name: CONTROLLER_KD
-              value: 0
+              value: "0"
       nodeSelector:
         beta.kubernetes.io/os: linux
 ---
