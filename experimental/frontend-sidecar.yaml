@@ -30,7 +30,7 @@ spec:
                 - all
             readOnlyRootFilesystem: true
         - name: front-end-sidecar
-          image: kcz17/http-sidecar:0.0.16
+          image: kcz17/http-sidecar:0.0.17
           ports:
             - containerPort: 8078
           env:
