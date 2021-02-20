@@ -30,7 +30,7 @@ spec:
                 - all
             readOnlyRootFilesystem: true
         - name: front-end-sidecar
-          image: kcz17/http-sidecar:0.0.9
+          image: kcz17/http-sidecar:0.0.10
           ports:
             - containerPort: 8078
           env:
@@ -45,12 +45,12 @@ spec:
             - name: CONTROLLER_SETPOINT
               value: "1"
             - name: CONTROLLER_KP
-              value: "100"
+              value: "20"
             - name: CONTROLLER_KI
               value: "0"
             - name: CONTROLLER_KD
-              value: "0"
-            - name: LOGGER
+              value: "10"
+            - name: LOGGER_DRIVER
               value: "influxdb"
             - name: LOGGER_INFLUXDB_HOST
               value: "http://146.169.42.88:8086"
