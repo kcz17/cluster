@@ -30,7 +30,7 @@ spec:
                 - all
             readOnlyRootFilesystem: true
         - name: front-end-sidecar
-          image: kcz17/http-sidecar:0.0.28
+          image: kcz17/http-sidecar:0.0.30
           ports:
             - containerPort: 8078
           env:
@@ -63,6 +63,8 @@ spec:
                 secretKeyRef:
                   name: dimmer-influxdb
                   key: token
+            - name: LOGGER_EXCLUDE_HTML
+              value: "false"
       nodeSelector:
         beta.kubernetes.io/os: linux
 ---
