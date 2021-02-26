@@ -41,13 +41,13 @@ spec:
             - name: DIMMER_ENABLED
               value: "true"
             - name: NUM_REQUESTS_WINDOW
-              value: "1000"
+              value: "100"
             - name: CONTROLLER_SAMPLE_PERIOD
               value: "1"
             - name: CONTROLLER_PERCENTILE
-              value: "p95"
+              value: "p75"
             - name: CONTROLLER_SETPOINT
-              value: "7"
+              value: "3"
             - name: CONTROLLER_KP
               value: "0.5"
             - name: CONTROLLER_KI
@@ -64,7 +64,7 @@ spec:
                   name: dimmer-influxdb
                   key: token
             - name: LOGGER_EXCLUDE_HTML
-              value: "false"
+              value: "true"
       nodeSelector:
         beta.kubernetes.io/os: linux
 ---
