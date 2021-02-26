@@ -65,10 +65,6 @@ spec:
                   key: token
             - name: LOGGER_EXCLUDE_HTML
               value: "true"
-      securityContext:
-        sysctls:
-        - name: net.core.somaxconn
-          value: "8192"
       nodeSelector:
         beta.kubernetes.io/os: linux
 ---
