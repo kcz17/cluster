@@ -1,43 +1,30 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: front-end
+  name: dimmer
   namespace: sock-shop
 spec:
   replicas: 1
   selector:
     matchLabels:
-      name: front-end
+      name: dimmer
   template:
     metadata:
       labels:
-        name: front-end
+        name: dimmer
     spec:
       containers:
-        - name: front-end
-          image: kcz17/front-end:1.0.0
-          resources:
-            requests:
-              cpu: 500m
-              memory: 200Mi
-          ports:
-            - containerPort: 8079
-          securityContext:
-            runAsNonRoot: true
-            runAsUser: 10001
-            capabilities:
-              drop:
-                - all
-            readOnlyRootFilesystem: true
-        - name: front-end-sidecar
-          image: kcz17/http-sidecar:0.0.32
+        - name: dimmer
+          image: kcz17/http-sidecar:0.0.33
           ports:
             - containerPort: 8078
           env:
             - name: FE_PORT
               value: "8078"
+            - name: BE_HOST
+              value: "front-end"
             - name: BE_PORT
-              value: "8079"
+              value: "80"
             - name: DIMMER_ENABLED
               value: "true"
             - name: NUM_REQUESTS_WINDOW
@@ -67,19 +54,3 @@ spec:
               value: "true"
       nodeSelector:
         beta.kubernetes.io/os: linux
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: front-end
-  labels:
-    name: front-end
-  namespace: sock-shop
-spec:
-  type: LoadBalancer
-  ports:
-    - port: 80
-      targetPort: 8078
-      nodePort: 30001
-  selector:
-    name: front-end
