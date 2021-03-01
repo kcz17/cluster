@@ -32,13 +32,13 @@ spec:
             - name: CONTROLLER_SAMPLE_PERIOD
               value: "1"
             - name: CONTROLLER_PERCENTILE
-              value: "p75"
+              value: "p95"
             - name: CONTROLLER_SETPOINT
-              value: "3"
+              value: "5"
             - name: CONTROLLER_KP
-              value: "0.5"
+              value: "2"
             - name: CONTROLLER_KI
-              value: "0.5"
+              value: "0.2"
             - name: CONTROLLER_KD
               value: "0"
             - name: LOGGER_DRIVER
