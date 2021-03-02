@@ -25,10 +25,17 @@ spec:
               value: "front-end"
             - name: BE_PORT
               value: "80"
+            - name: LOGGER_DRIVER
+              value: "influxdb"
+            - name: LOGGER_INFLUXDB_HOST
+              value: "http://146.169.42.88:8086"
+            - name: LOGGER_INFLUXDB_TOKEN
+              valueFrom:
+                secretKeyRef:
+                  name: dimmer-influxdb
+                  key: token
             - name: DIMMER_ENABLED
               value: "true"
-            - name: NUM_REQUESTS_WINDOW
-              value: "100"
             - name: CONTROLLER_SAMPLE_PERIOD
               value: "1"
             - name: CONTROLLER_PERCENTILE
@@ -41,16 +48,9 @@ spec:
               value: "0.2"
             - name: CONTROLLER_KD
               value: "0"
-            - name: LOGGER_DRIVER
-              value: "influxdb"
-            - name: LOGGER_INFLUXDB_HOST
-              value: "http://146.169.42.88:8086"
-            - name: LOGGER_INFLUXDB_TOKEN
-              valueFrom:
-                secretKeyRef:
-                  name: dimmer-influxdb
-                  key: token
-            - name: LOGGER_EXCLUDE_HTML
+            - name: RESPONSE_TIME_COLLECTOR_NUM_REQUESTS_WINDOW
+              value: "100"
+            - name: RESPONSE_TIME_COLLECTOR_EXCLUDES_HTML
               value: "true"
       nodeSelector:
         beta.kubernetes.io/os: linux
