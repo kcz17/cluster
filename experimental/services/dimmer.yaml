@@ -11,5 +11,8 @@ spec:
     - port: 80
       targetPort: 8078
       nodePort: 30002
+    - port: 81
+      targetPort: 8079
+      nodePort: 30003
   selector:
     name: dimmer
