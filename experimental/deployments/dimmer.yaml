@@ -42,7 +42,7 @@ spec:
             - name: CONTROLLER_PERCENTILE
               value: "p95"
             - name: CONTROLLER_SETPOINT
-              value: "5"
+              value: "3"
             - name: CONTROLLER_KP
               value: "2"
             - name: CONTROLLER_KI
