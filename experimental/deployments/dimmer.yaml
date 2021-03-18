@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: dimmer
-          image: kcz17/http-sidecar:0.0.53
+          image: kcz17/http-sidecar:0.0.54
           ports:
             - containerPort: 8078
             - containerPort: 8079
