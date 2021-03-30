@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: carts-reseeder
+  namespace: sock-shop
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      name: carts-reseeder
+  template:
+    metadata:
+      labels:
+        name: carts-reseeder
+    spec:
+      containers:
+        - name: carts-reseeder
+          image: kcz17/carts-reseeder:0.0.1
+          ports:
+            - containerPort: 8079
+      nodeSelector:
+        beta.kubernetes.io/os: linux
