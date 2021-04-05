@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: carts-reseeder
-          image: kcz17/carts-reseeder:0.0.5
+          image: kcz17/carts-reseeder:0.0.6
           ports:
             - containerPort: 8079
       nodeSelector:
