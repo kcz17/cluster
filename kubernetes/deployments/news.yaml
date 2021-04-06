@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
         - name: news
-          image: kcz17/news:1.0.1
+          image: kcz17/news:1.0.2
           ports:
             - containerPort: 8080
           securityContext:
