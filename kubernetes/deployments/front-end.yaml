@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: front-end
-          image: kcz17/front-end:1.1.2
+          image: kcz17/front-end:1.1.3
           resources:
             requests:
               cpu: 100m
