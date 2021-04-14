@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: dimmer
-          image: kcz17/http-sidecar:0.0.61
+          image: kcz17/http-sidecar:0.0.62
           ports:
             - containerPort: 8078
             - containerPort: 8079
@@ -35,6 +35,10 @@ spec:
                 secretKeyRef:
                   name: dimmer-influxdb
                   key: token
+            - name: LOGGER_INFLUXDB_ORG
+              value: "kcz17"
+            - name: LOGGER_INFLUXDB_BUCKET
+              value: "dimmer"
             - name: DIMMER_ENABLED
               value: "true"
             - name: CONTROLLER_SAMPLE_PERIOD
