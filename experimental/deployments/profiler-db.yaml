@@ -1,0 +1,34 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: profiler-db
+  labels:
+    name: profiler-db
+  namespace: sock-shop
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      name: profiler-db
+  template:
+    metadata:
+      labels:
+        name: profiler-db
+    spec:
+      containers:
+        - name: profiler-db
+          image: redis:alpine
+          ports:
+            - name: redis
+              containerPort: 6379
+          securityContext:
+            capabilities:
+              drop:
+                - all
+              add:
+                - CHOWN
+                - SETGID
+                - SETUID
+            readOnlyRootFilesystem: true
+      nodeSelector:
+        beta.kubernetes.io/os: linux

@@ -55,5 +55,24 @@ spec:
               value: "0"
             - name: RESPONSE_TIME_COLLECTOR_NUM_REQUESTS_WINDOW
               value: "100"
+            - name: PROFILER_IS_ENABLED
+              value: "true"
+            - name: PROFILER_INFLUXDB_HOST
+              value: "http://146.169.42.88:8086"
+            - name: PROFILER_INFLUXDB_TOKEN
+              valueFrom:
+                secretKeyRef:
+                  name: dimmer-influxdb
+                  key: token
+            - name: PROFILER_INFLUXDB_ORG
+              value: "kcz17"
+            - name: PROFILER_INFLUXDB_BUCKET
+              value: "profiler"
+            - name: PROFILER_REDIS_ADDR
+              value: "session-db:6379"
+            - name: PROFILER_REDIS_PASSWORD
+              value: ""
+            - name: PROFILER_REDIS_DB
+              value: "0"
       nodeSelector:
         beta.kubernetes.io/os: linux
