@@ -46,6 +46,6 @@ spec:
             - name: INFLUXDB_ORG
               value: "kcz17"
             - name: INFLUXDB_BUCKET
-              value: "dimmer"
+              value: "session_history"
       nodeSelector:
         beta.kubernetes.io/os: linux

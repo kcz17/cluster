@@ -69,7 +69,7 @@ spec:
             - name: PROFILER_INFLUXDB_ORG
               value: "kcz17"
             - name: PROFILER_INFLUXDB_BUCKET
-              value: "profiler"
+              value: "session_history"
             - name: PROFILER_REDIS_ADDR
               value: "session-db:6379"
             - name: PROFILER_REDIS_PASSWORD
