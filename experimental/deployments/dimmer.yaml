@@ -55,7 +55,7 @@ spec:
               value: "0"
             - name: RESPONSE_TIME_COLLECTOR_NUM_REQUESTS_WINDOW
               value: "100"
-            - name: PROFILER_IS_ENABLED
+            - name: PROFILER_ENABLED
               value: "true"
             - name: PROFILER_SESSION_COOKIE
               value: "md.sid"
