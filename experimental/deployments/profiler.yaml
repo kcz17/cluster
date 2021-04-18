@@ -31,7 +31,7 @@ spec:
             readOnlyRootFilesystem: true
           env:
             - name: REDIS_ADDR
-              value: "session-db:6379"
+              value: "profiler-db:6379"
             - name: REDIS_PASSWORD
               value: ""
             - name: REDIS_STORE_DB
