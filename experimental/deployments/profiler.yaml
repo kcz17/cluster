@@ -50,6 +50,6 @@ spec:
             - name: INFLUXDB_SESSION_BUCKET
               value: "session_history"
             - name: INFLUXDB_LOGGING_BUCKET
-                value: "profiling_log"
+              value: "profiling_log"
       nodeSelector:
         beta.kubernetes.io/os: linux
