@@ -31,7 +31,7 @@ spec:
             readOnlyRootFilesystem: true
           volumeMounts:
             - name: config-volume
-              mountPath: /etc/config
+              mountPath: /etc/config.yaml
           env:
             - name: connections.influxdb.token
               valueFrom:
