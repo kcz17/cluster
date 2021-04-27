@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
         - name: profiler
-          image: kcz17/profiler:0.0.8
+          image: kcz17/profiler:0.0.9
           ports:
             - containerPort: 8080
           securityContext:
