@@ -32,7 +32,6 @@ spec:
           volumeMounts:
             - name: config-volume
               mountPath: /app/config.yaml
-              subPath: config.yaml
           env:
             - name: connections.influxdb.token
               valueFrom:
