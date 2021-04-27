@@ -1,0 +1,42 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: profiler-config
+  namespace: sock-shop
+data:
+  config.yaml: |
+    connections:
+      redis:
+        addr: "profiler-db:6379"
+        pass: ""
+        storeDB: 0
+        queueDB: 1
+      influxdb:
+        addr: "http://146.169.42.88:8086"
+        # token should be set as a secret from the deployment
+        org: "kcz17"
+        sessionBucket: "session_history"
+        loggingBucket: "profiling_log"
+    profiling:
+      interval: 10
+    rules:
+      - description: "User has checked out items in past"
+        path: "/cart"
+        method:
+          shouldMatchAll: false
+          method: "POST"
+        occurrences: 1
+        result: "high"
+      - description: "User is browsing and unlikely to buy"
+        path: "/category.html"
+        method:
+          shouldMatchAll: true
+        occurrences: 5
+        result: "low"
+      - description: "User is browsing for delivery updates"
+        path: "/news"
+        method:
+          shouldMatchAll: true
+        occurrences: 1
+        result: "low"
+

@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
         - name: profiler
-          image: kcz17/profiler:0.0.5
+          image: kcz17/profiler:0.0.6
           ports:
             - containerPort: 8080
           securityContext:
@@ -29,27 +29,19 @@ spec:
               add:
                 - NET_BIND_SERVICE
             readOnlyRootFilesystem: true
+          volumeMounts:
+            - name: config-volume
+              mountPath: /app/config.yaml
+              subPath: config.yaml
           env:
-            - name: REDIS_ADDR
-              value: "profiler-db:6379"
-            - name: REDIS_PASSWORD
-              value: ""
-            - name: REDIS_STORE_DB
-              value: "0"
-            - name: REDIS_QUEUE_DB
-              value: "1"
-            - name: INFLUXDB_ADDR
-              value: "http://146.169.42.88:8086"
-            - name: INFLUXDB_TOKEN
+            - name: connections.influxdb.token
               valueFrom:
                 secretKeyRef:
                   name: profiler-influxdb
                   key: token
-            - name: INFLUXDB_ORG
-              value: "kcz17"
-            - name: INFLUXDB_SESSION_BUCKET
-              value: "session_history"
-            - name: INFLUXDB_LOGGING_BUCKET
-              value: "profiling_log"
+      volumes:
+        - name: config-volume
+          configMap:
+            name: profiler-config
       nodeSelector:
         beta.kubernetes.io/os: linux
