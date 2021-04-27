@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
         - name: profiler
-          image: kcz17/profiler:0.0.9
+          image: kcz17/profiler:0.0.10
           ports:
             - containerPort: 8080
           securityContext:
@@ -31,7 +31,8 @@ spec:
             readOnlyRootFilesystem: true
           volumeMounts:
             - name: config-volume
-              mountPath: /etc/config/config.yaml
+              mountPath: /app/config.yaml
+              subPath: config.yaml
           env:
             - name: connections.influxdb.token
               valueFrom:
