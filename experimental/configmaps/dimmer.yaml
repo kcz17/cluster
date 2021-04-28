@@ -1,0 +1,50 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: dimmer-config
+  namespace: sock-shop
+data:
+  config.yaml: |
+    proxying:
+      frontendPort: 8078
+      backendHost: "front-end"
+      backendPort: 80
+    logging:
+      driver: "influxdb"
+      influxdb:
+        host: "http://146.169.42.88:8086"
+        # token should be set as a secret from the deployment
+        org: "kcz17"
+        bucket: "dimmer"
+    dimming:
+      enabled: true
+      dimmableComponents:
+        - path: "recommender"
+          probability: 0.5
+        - path: "news"
+          probability: 0.5
+        - path: "cart"
+          exclusions:
+            - method: "GET"
+              substring: "basket.html"
+          probability: 0.98
+      controller:
+        samplePeriod: 1
+        percentile: "p95"
+        setpoint: 3
+        kp: 2
+        ki: 0.2
+        kd: 0
+      profiling:
+        enabled: true
+        sessionCookie: "md.sid"
+        influxdb:
+          host: "http://146.169.42.88:8086"
+          # token should be set as a secret from the deployment
+          org: "kcz17"
+          bucket: "session_history"
+        redis:
+          addr: "profiler-db:6379"
+          password: ""
+          prioritiesDB: 0
+          queueDB: 1

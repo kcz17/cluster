@@ -15,70 +15,23 @@ spec:
     spec:
       containers:
         - name: dimmer
-          image: kcz17/http-sidecar:0.0.84
+          image: kcz17/http-sidecar:0.0.85
           ports:
             - containerPort: 8078
             - containerPort: 8079
+          volumeMounts:
+            - name: config-volume
+              mountPath: /app/config.yaml
+              subPath: config.yaml
           env:
-            - name: FE_PORT
-              value: "8078"
-            - name: BE_HOST
-              value: "front-end"
-            - name: BE_PORT
-              value: "80"
-            - name: LOGGER_DRIVER
-              value: "influxdb"
-            - name: LOGGER_INFLUXDB_HOST
-              value: "http://146.169.42.88:8086"
-            - name: LOGGER_INFLUXDB_TOKEN
+            - name: connections.influxdb.token
               valueFrom:
                 secretKeyRef:
                   name: dimmer-influxdb
                   key: token
-            - name: LOGGER_INFLUXDB_ORG
-              value: "kcz17"
-            - name: LOGGER_INFLUXDB_BUCKET
-              value: "dimmer"
-            - name: DIMMER_ENABLED
-              value: "true"
-            - name: CONTROLLER_SAMPLE_PERIOD
-              value: "1"
-            - name: CONTROLLER_PERCENTILE
-              value: "p95"
-            - name: CONTROLLER_SETPOINT
-              value: "3"
-            - name: CONTROLLER_KP
-              value: "2"
-            - name: CONTROLLER_KI
-              value: "0.2"
-            - name: CONTROLLER_KD
-              value: "0"
-            - name: RESPONSE_TIME_COLLECTOR_NUM_REQUESTS_WINDOW
-              value: "100"
-            - name: PROFILER_ENABLED
-              value: "true"
-            - name: PROFILER_SESSION_COOKIE
-              value: "md.sid"
-            - name: PROFILER_INFLUXDB_HOST
-              value: "http://146.169.42.88:8086"
-            - name: PROFILER_INFLUXDB_TOKEN
-              valueFrom:
-                secretKeyRef:
-                  name: dimmer-influxdb
-                  key: token
-            - name: PROFILER_INFLUXDB_ORG
-              value: "kcz17"
-            - name: PROFILER_INFLUXDB_BUCKET
-              value: "session_history"
-            - name: PROFILER_REDIS_ADDR
-              value: "profiler-db:6379"
-            - name: PROFILER_REDIS_PASSWORD
-              value: ""
-            - name: PROFILER_REDIS_PRIORITIES_DB
-              value: "0"
-            - name: PROFILER_REDIS_QUEUE_DB
-              value: "1"
-            - name: PROFILER_DIMMING_PROBABILITY_LOW_MULTIPLIER
-              value: "1.5"
+      volumes:
+        - name: config-volume
+          configMap:
+            name: dimmer-config
       nodeSelector:
         beta.kubernetes.io/os: linux
