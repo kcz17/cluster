@@ -20,10 +20,16 @@ data:
       enabled: true
       dimmableComponents:
         - path: "recommender"
+          method:
+            shouldMatchAll: true
           probability: 0.5
         - path: "news"
+          method:
+            shouldMatchAll: true
           probability: 0.5
         - path: "cart"
+          method:
+            method: "GET"
           exclusions:
             - method: "GET"
               substring: "basket.html"
