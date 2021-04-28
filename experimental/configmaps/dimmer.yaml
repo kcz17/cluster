@@ -38,9 +38,9 @@ data:
         samplePeriod: 1
         percentile: "p95"
         setpoint: 3
-        kp: 2
+        kp: 2.0
         ki: 0.2
-        kd: 0
+        kd: 0.0
       profiler:
         enabled: true
         sessionCookie: "md.sid"
