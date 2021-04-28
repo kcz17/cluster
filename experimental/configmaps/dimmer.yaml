@@ -5,14 +5,15 @@ metadata:
   namespace: sock-shop
 data:
   config.yaml: |
-    proxying:
+    connection:
       frontendPort: 8078
       backendHost: "front-end"
       backendPort: 80
+      adminPort: 8079
     logging:
       driver: "influxdb"
       influxdb:
-        host: "http://146.169.42.88:8086"
+        addr: "http://146.169.42.88:8086"
         # token should be set as a secret from the deployment
         org: "kcz17"
         bucket: "dimmer"
@@ -45,7 +46,7 @@ data:
         enabled: true
         sessionCookie: "md.sid"
         influxdb:
-          host: "http://146.169.42.88:8086"
+          addr: "http://146.169.42.88:8086"
           # token should be set as a secret from the deployment
           org: "kcz17"
           bucket: "session_history"
