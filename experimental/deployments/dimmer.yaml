@@ -24,12 +24,12 @@ spec:
               mountPath: /app/config.yaml
               subPath: config.yaml
           env:
-            - name: Logging.InfluxDB.Token
+            - name: logging.influxdb.token
               valueFrom:
                 secretKeyRef:
                   name: dimmer-influxdb
                   key: token
-            - name: Config.Dimming.Profiler.InfluxDB.Token
+            - name: dimming.profiler.influxdb.token
               valueFrom:
                 secretKeyRef:
                   name: dimmer-influxdb
