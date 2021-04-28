@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
         - name: profiler
-          image: kcz17/profiler:0.0.12
+          image: kcz17/profiler:0.0.13
           ports:
             - containerPort: 8080
           securityContext:
@@ -34,7 +34,7 @@ spec:
               mountPath: /app/config.yaml
               subPath: config.yaml
           env:
-            - name: connections.influxdb.token
+            - name: Connections.InfluxDB.Token
               valueFrom:
                 secretKeyRef:
                   name: profiler-influxdb

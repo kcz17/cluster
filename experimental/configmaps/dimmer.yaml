@@ -41,7 +41,7 @@ data:
         kp: 2
         ki: 0.2
         kd: 0
-      profiling:
+      profiler:
         enabled: true
         sessionCookie: "md.sid"
         influxdb:
