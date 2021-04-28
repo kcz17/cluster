@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: dimmer
-          image: kcz17/http-sidecar:0.0.90
+          image: kcz17/http-sidecar:0.0.91
           ports:
             - containerPort: 8078
             - containerPort: 8079
@@ -24,7 +24,7 @@ spec:
               mountPath: /app/config.yaml
               subPath: config.yaml
           env:
-            - name: Config.Logging.InfluxDB.Token
+            - name: Logging.InfluxDB.Token
               valueFrom:
                 secretKeyRef:
                   name: dimmer-influxdb
