@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: dimmer
-          image: kcz17/dimmer:1.0.15
+          image: kcz17/dimmer:1.0.16
           ports:
             - containerPort: 8078
             - containerPort: 8079
